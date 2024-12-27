@@ -1,0 +1,68 @@
+<?php
+/** @var \Magelearn\Story\Model\Story $story */
+/** @var \Magelearn\Story\Block\View\Story $block */
+$story = $block->getCurrentStory();
+$galleryImages = $block->getStoryGallery();
+
+?>
+<?php if ($story->getPhoto()): ?>
+    <div class="story-main-section">
+        <div class="main-story-photo">
+            <img src="<?= $block->escapeHtml($block->getStoryPhoto($story->getPhoto())) ?>"
+                 alt="<?= $block->escapeHtml($story->getName() . ' - Main Photo') ?>"
+                 loading="lazy">
+        </div>
+        <div class="story-description">
+            <?= /** @escapeNotVerified */ ($block->getStoryDescription($story)) ?>
+        </div>
+    </div>
+<?php endif; ?>
+<?php if (!empty($galleryImages)): ?>
+    <div class="story-gallery-section">
+        <h2 class="gallery-title"><?= $block->escapeHtml(__('Image Gallery')) ?></h2>
+
+        <div class="story-gallery-container" id="story-gallery">
+            <?php foreach ($galleryImages as $index => $image): ?>
+                <a class="story-gallery-item"
+                   data-fancybox="gallery"
+                   data-src="<?= $block->escapeHtml($image['path']) ?>"
+                   data-caption="<?= $block->escapeHtml($story->getName() . ' - Image ' . ($index + 1)) ?>">
+                    <img src="<?= $block->escapeHtml($image['path']) ?>"
+                         alt="<?= $block->escapeHtml($story->getName() . ' - Image ' . ($index + 1)) ?>"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='<?= $block->escapeUrl($block->getViewFileUrl('Magelearn_Story::images/placeholder.jpg')) ?>';">
+                </a>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+    <script type="text/x-magento-init">
+    {
+        "#story-gallery": {
+            "Magelearn_Story/js/story-gallery": {
+                "options": {
+                    "groupAll": true,
+                    "animated": true,
+                    "showClass": "f-fadeIn",
+                    "hideClass": "f-fadeOut",
+                    "Toolbar": {
+                        "display": {
+                            "left": ["prev", "next"],
+                            "middle": ["zoomIn", "zoomOut", "toggle1to1", "slideshowStart", "slideshowStop"],
+                            "right": ["close"]
+                        }
+                    },
+                    "Carousel": {
+                        "infinite": true,
+                        "friction": 0.8
+                    }
+                }
+            }
+        }
+    }
+    </script>
+<?php else: ?>
+    <div class="no-gallery-message">
+        <?= $block->escapeHtml(__('No images available for this story.')) ?>
+    </div>
+<?php endif; ?>

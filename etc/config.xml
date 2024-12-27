@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mlstory>
+            <general>
+                <enable_pages>1</enable_pages>
+                <enable_link>1</enable_link>
+                <linktext>Available in Story</linktext>
+                <new_page>1</new_page>
+                <label>Story Listing</label>
+            </general>
+            <story>
+                <main_settings>
+                    <meta_title>Story Teller</meta_title>
+                    <pagination_limit>5</pagination_limit>
+                    <url>mlstory</url>
+                </main_settings>
+            </story>
+        </mlstory>
+    </default>
+</config>

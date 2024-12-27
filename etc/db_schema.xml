@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="magelearn_story" resource="default" engine="innodb" comment="Magelearn Story Table">
+		<column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="id"/>
+		<column name="name" nullable="false" xsi:type="varchar" comment="name" length="255" default=""/>
+		<column name="status" xsi:type="smallint" padding="6" nullable="true" comment="status" unsigned="false"/>
+		<column xsi:type="smallint" name="position" padding="6" unsigned="false" nullable="true" identity="false"
+                comment="Story Position"/>
+		<column name="photo" nullable="false" xsi:type="text" length="255" comment="photo"/>
+		<column name="description" nullable="true" xsi:type="text" length="255" comment="description"/>
+		<column xsi:type="text" name="stores" nullable="false" comment="Stores Ids"/>
+		<column xsi:type="varchar" name="url_key" nullable="true" length="255" comment="Url Key"/>
+        <column xsi:type="varchar" name="meta_title" nullable="true" length="255" comment="Meta Title"/>
+        <column xsi:type="text" name="meta_description" nullable="true" comment="Meta Description"/>
+        <column xsi:type="text" name="meta_robots" nullable="true" comment="Meta Robots"/>
+        <column xsi:type="varchar" name="canonical_url" nullable="true" length="255" comment="Canonical Url"/>
+		<column name="created_at" nullable="true" xsi:type="datetime" comment="created_at"/>
+		<column name="updated_at" nullable="true" xsi:type="datetime" comment="updated_at" on_update="true"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="id"/>
+		</constraint>
+		<index referenceId="MAGELEARN_STORY_STATUS" indexType="btree">
+			<column name="status"/>
+		</index>
+	</table>
+	<table name="magelearn_story_gallery" resource="default" engine="innodb" comment="Table for magelearn story gallery">
+		<column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Id"/>
+		<column name="story_id" padding="10" unsigned="true" nullable="false" xsi:type="int" comment="Story id"/>
+		<column name="image_name" nullable="false" xsi:type="text" length="255" comment="Image Name"/>
+		<column name="is_base" nullable="false" xsi:type="boolean" comment="Base Image Flag"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="id"/>
+		</constraint>
+		<constraint xsi:type="foreign" referenceId="FK_MAGELEARN_STORY_GALLERY_STORY_ID"
+                    table="magelearn_story_gallery" column="story_id" referenceTable="magelearn_story"
+                    referenceColumn="id" onDelete="CASCADE"/>
+	</table>
+</schema>

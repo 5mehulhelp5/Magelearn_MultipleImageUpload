@@ -1,0 +1,56 @@
+<?php
+/**
+ * @var \Magelearn\Story\Block\Story $block
+ * @var \Magelearn\Story\Model\Story $story
+ */
+$stories = $block->getStoryCollection();
+?>
+
+<div class="magelearn-story-list">
+	<?php if ($stories->count()): ?>
+		<div class="story-container story-grid">
+            <?php foreach ($stories as $story): ?>
+                <div class="story-item" data-mlid="<?= (int)$story['id']; ?>">
+                	<div class="story-card">
+                        <?php if ($photoImage = $story->getPhoto()):?>
+                            <div class="story-image">
+                                <div class="story-image-wrapper">
+                                    <!-- Main Image -->
+                                    <img 
+                                        class="main-photo" 
+                                        src="<?= $story->getPhoto() ?>" 
+                                        alt="<?= $block->escapeHtml($story->getName()) ?>"
+                                    />
+
+                                    <!-- Hover Image: Check if photo_url exists -->
+                                    <?php if ($hoverImage = $story->getPhotoUrl()): ?>
+                                        <img 
+                                            class="hover-photo" 
+                                            src="<?= $hoverImage ?>" 
+                                            alt="<?= $block->escapeHtml($story->getName()) ?>"
+                                        />
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endif;?>
+                        <div class="story-content">
+                            <h2 class="story-title">
+                                <a href="<?= $block->getUrl($story->getStoryUrl()) ?>">
+                                    <?= $block->escapeHtml($story->getName()) ?>
+                                </a>
+                            </h2>
+                            <div class="story-description">
+                                <?= /** @escapeNotVerified */ ($block->getStoryDescription($story, true)); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <?php if ($pager = $block->getPagerHtml()): ?>
+            <div class="story-pagination"><?= /** @escapeNotVerified */ $pager; ?></div>
+        <?php endif; ?>
+        <?php else: ?>
+            <p class="no-stories">No stories found.</p>
+        <?php endif; ?>
+</div>

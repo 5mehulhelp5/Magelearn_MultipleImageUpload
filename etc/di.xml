@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="magelearn_story_listing_data_source" xsi:type="string">Magelearn\Story\Model\ResourceModel\Story\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<virtualType name="Magelearn\Story\Model\ResourceModel\Story\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">magelearn_story</argument>
+			<argument name="resourceModel" xsi:type="string">Magelearn\Story\Model\ResourceModel\Story</argument>
+		</arguments>
+	</virtualType>
+	<virtualType name="Magelearn\Story\Model\ImageUploader" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="const">\Magelearn\Story\Model\ImageProcessor::ML_STORY_MEDIA_TMP_PATH</argument>
+            <argument name="basePath" xsi:type="const">\Magelearn\Story\Model\ImageProcessor::ML_STORY_MEDIA_PATH</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magelearn\Story\Controller\Adminhtml\File\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Magelearn\Story\Model\ImageUploader</argument>
+        </arguments>
+    </type>
+    <type name="Magelearn\Story\Model\ImageProcessor">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Magelearn\Story\Model\ImageUploader</argument>
+        </arguments>
+    </type>
+</config>

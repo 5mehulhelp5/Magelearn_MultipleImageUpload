@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Magelearn_Story::config" title="Magelearn Story Page" sortOrder="192012" />
+                        </resource>
+                    </resource>
+                </resource>
+				<resource id="Magelearn_Story::Story" title="Story" sortOrder="10">
+					<resource id="Magelearn_Story::Story_save" title="Save Story" sortOrder="10"/>
+					<resource id="Magelearn_Story::Story_delete" title="Delete Story" sortOrder="20"/>
+					<resource id="Magelearn_Story::Story_update" title="Update Story" sortOrder="30"/>
+					<resource id="Magelearn_Story::Story_view" title="View Story" sortOrder="40"/>
+				</resource>
+				<resource id="Magelearn_Story::StoryImage" title="Story Image" sortOrder="10">
+					<resource id="Magelearn_Story::StoryImage_save" title="Save StoryImage" sortOrder="10"/>
+					<resource id="Magelearn_Story::StoryImage_delete" title="Delete StoryImage" sortOrder="20"/>
+					<resource id="Magelearn_Story::StoryImage_update" title="Update StoryImage" sortOrder="30"/>
+					<resource id="Magelearn_Story::StoryImage_view" title="View StoryImage" sortOrder="40"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

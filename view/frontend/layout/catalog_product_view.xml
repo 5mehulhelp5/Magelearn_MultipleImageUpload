@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.main">
+            <block
+                    class="Magelearn\Story\Block\Location"
+                    name="mlstory.link" as="mlstory_link"
+                    template="Magelearn_Story::link.phtml"
+                    after="page.main.title"
+                    ifconfig="amlocator/general/enable_link"
+            />
+        </referenceContainer>
+    </body>
+</page>

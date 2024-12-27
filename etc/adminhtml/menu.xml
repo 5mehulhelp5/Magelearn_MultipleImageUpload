@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Magelearn_Story::story"
+			 title="Magelearn Story"
+			 module="Magelearn_Story"
+			 parent="Magento_Backend::content"
+			 sortOrder="110"
+			 resource="Magelearn_Story::story"
+		/>
+		<add id="Magelearn_Story::magelearn_story"
+			 title="Story"
+			 module="Magelearn_Story"
+			 sortOrder="10"
+			 resource="Magelearn_Story::magelearn_story"
+			 parent="Magelearn_Story::story"
+			 action="magelearn_story/story/index"
+		/>
+	</menu>
+</config>

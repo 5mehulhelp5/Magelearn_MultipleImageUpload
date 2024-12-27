@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="mlstory" translate="label" type="text" sortOrder="192012" showInDefault="1" showInWebsite="1" showInStore="1">
+            <resource>Magelearn_Story::config</resource>
+            <class>separator-top</class>
+            <label>Story Page Setting</label>
+            <tab>magelearn</tab>
+
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enable_pages" translate="label" type="select" sortOrder="15" showInDefault="1" showInStore="1" showInWebsite="1">
+                    <label>Enable Location Pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="enable_link" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Store Locator's Link on Product Pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip>The link will redirect customer to the store locator's page with locations where the product is available.</tooltip>
+                </field>
+                <field id="linktext" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>'Available in Stores' Link Text</label>
+                    <tooltip>Customers can find locations where the product is available clicking on the link within the product page.
+                        You can set the title for the link here. The default title is “Available in Stores”.
+                    </tooltip>
+                    <depends>
+                        <field id="enable_link">1</field>
+                    </depends>
+                </field>
+                <field id="new_page" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Open 'Available in Stores' Page in a New Tab</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_link">1</field>
+                    </depends>
+                </field>
+                <field id="label" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title</label>
+                    <tooltip>The title of the Store Locator page will be displayed in the top (breadcrumbs) and bottom menu (footer).</tooltip>
+                </field>
+                <field id="add_to_toolbar_menu" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add Store Locator Link to the Toolbar</label>
+                    <tooltip>Link to the Store Locator page will be added to the toolbar</tooltip>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="add_to_footer_menu" translate="label comment" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add Store Locator Link to the Footer</label>
+                    <tooltip>Link to the Store Locator page will be added to the footer</tooltip>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="story" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+			    <label>Story Page</label>
+			    <group id="main_settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+			        <label>Main Settings</label>
+			        <field id="url" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+			            <label>URL Key</label>
+			            <validate>required-entry</validate>
+			        </field>
+			        <field id="meta_title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+			            <label>Meta Title</label>
+			        </field>
+			        <field id="meta_description" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+			            <label>Meta Description</label>
+			        </field>
+			        <field id="pagination_limit" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+			            <label>Number of Stories on a Page</label>
+			            <validate>validate-number-range</validate>
+			        </field>
+			        <field id="description_limit" translate="label" type="text" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+			            <label>Description Length Limit</label>
+			        </field>
+			    </group>
+			</group>
+        </section>
+    </system>
+</config>
