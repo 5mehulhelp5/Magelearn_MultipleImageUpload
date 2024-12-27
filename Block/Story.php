@@ -142,6 +142,26 @@ class Story extends Template implements IdentityInterface
     }
     
     /**
+     * Return title of SStory
+     *
+     * @param StoryModel $story
+     *
+     * @return string
+     */
+    public function getStoryTitle($story)
+    {
+        if ($story->getUrlKey() && $this->configProvider->getEnablePages()) {
+            return '<a class="mlstory-link" href="' . $this->getStoryUrl($story)
+            . '" title="' . $this->escaper->escapeHtml($story->getName())
+            . '" target="_blank">'
+                . $this->escaper->escapeHtml($story->getName()) . '</a>';
+        } else {
+            return '<div class="mlstory-title">' . $this->escaper->escapeHtml($story->getName())
+            . '</div>';
+        }
+    }
+    
+    /**
      * Return main image url
      *
      * @param StoryModel $story

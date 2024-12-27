@@ -10,6 +10,10 @@ $stories = $block->getStoryCollection();
 	<?php if ($stories->count()): ?>
 		<div class="story-container story-grid">
             <?php foreach ($stories as $story): ?>
+            	<?php
+//             	   echo "<pre>";
+//             	   print_r($story);
+            	?>
                 <div class="story-item" data-mlid="<?= (int)$story['id']; ?>">
                 	<div class="story-card">
                         <?php if ($photoImage = $story->getPhoto()):?>
@@ -35,9 +39,7 @@ $stories = $block->getStoryCollection();
                         <?php endif;?>
                         <div class="story-content">
                             <h2 class="story-title">
-                                <a href="<?= $block->getUrl($story->getStoryUrl()) ?>">
-                                    <?= $block->escapeHtml($story->getName()) ?>
-                                </a>
+                            	<?= $block->getStoryTitle($story) ?>
                             </h2>
                             <div class="story-description">
                                 <?= /** @escapeNotVerified */ ($block->getStoryDescription($story, true)); ?>

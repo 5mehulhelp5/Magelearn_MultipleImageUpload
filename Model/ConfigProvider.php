@@ -19,8 +19,6 @@ class ConfigProvider
     /**#@+
      * Constants defined for xpath of system configuration
      */
-    public const XPATH_NEW_PAGE = 'general/new_page';
-    public const XPATH_LINK_TEXT = 'general/linktext';
     public const XPATH_ENABLE_PAGES = 'general/enable_pages';
     public const XPATH_LABEL = 'general/label';
     public const XPATH_ADD_LINK = 'general/add_to_toolbar_menu';
@@ -92,28 +90,6 @@ class ConfigProvider
     public function getPaginationLimit($scopeCode = null)
     {
         return (int)$this->getValue(self::XPATH_PAGINATION_LIMIT, $scopeCode);
-    }
-
-    /**
-     * @param string|null $scopeCode
-     *
-     * @return bool
-     */
-    public function getOpenNewPage($scopeCode = null)
-    {
-        return (bool)$this->getValue(self::XPATH_NEW_PAGE, $scopeCode);
-    }
-
-    /**
-     * @param string|null $scopeCode
-     *
-     * @return string
-     */
-    public function getLinkText($scopeCode = null)
-    {
-        $linkText = $this->getValue(self::XPATH_LINK_TEXT, $scopeCode);
-
-        return $linkText ? $linkText : __('Available In Story')->getText();
     }
 
     /**

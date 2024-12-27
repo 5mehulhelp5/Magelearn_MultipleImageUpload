@@ -115,20 +115,6 @@ class Story extends AbstractModel implements StoryInterface
                 );
         }
     }
-    
-    /**
-     * Get full description for story page
-     *
-     * @return string
-     */
-    public function getStoryDescription()
-    {
-        $description = '';
-        if ($this->getDescription()) {
-            $description = $this->getDescription();
-        }
-        return $this->filterProvider->getPageFilter()->filter($description);
-    }
 
     /**
      * Optimized get data method
