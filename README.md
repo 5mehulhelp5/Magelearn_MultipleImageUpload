@@ -28,7 +28,8 @@ The story listing page on the frontend will display stories with filters applied
 
 Under Store > Configuration > Magelearn Modules > Story Page Settings, you can enable or disable the story pages.
 This setting provides control over the navigation to the story detail page from the listing page title or the "Read more" link in the description.
-Installation Instructions
+
+### Installation Instructions
 
 #### You can install the Magelearn_Story module in two ways:
 
