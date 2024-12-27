@@ -5,8 +5,8 @@ A Magento 2 module that offers advanced functionality for uploading multiple ima
 ### Description
 The Magelearn_Story module adds a powerful image gallery and story listing functionality to your Magento store. This module allows admins to upload multiple images in a gallery format and easily select a base image for the hover effect on the frontend. Additionally, it provides features for managing the main photo image for each story, allowing for better content management and display on the website.
 
-Key Features
-Image Gallery Management:
+### Key Features
+#### Image Gallery Management:
 
 Upload multiple images for a story using a single file upload button from the admin panel.
 Select a base image for the hover effect on the frontend gallery listing page.
