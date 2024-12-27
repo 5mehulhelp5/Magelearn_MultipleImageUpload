@@ -10,10 +10,6 @@ $stories = $block->getStoryCollection();
 	<?php if ($stories->count()): ?>
 		<div class="story-container story-grid">
             <?php foreach ($stories as $story): ?>
-            	<?php
-//             	   echo "<pre>";
-//             	   print_r($story);
-            	?>
                 <div class="story-item" data-mlid="<?= (int)$story['id']; ?>">
                 	<div class="story-card">
                         <?php if ($photoImage = $story->getPhoto()):?>

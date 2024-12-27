@@ -3,6 +3,9 @@
     <head>
         <css src="Magelearn_Story::css/storyview.css"/>
         <css src="Magelearn_Story::css/fancybox.css"/>
+        <css src="Magelearn_Story::css/slick.css"/>
+        <css src="Magelearn_Story::css/slick-theme.css"/>
+        <script src="Magelearn_Story::js/slick-slider.js"/>
     </head>
     <body>
         <referenceContainer name="main">

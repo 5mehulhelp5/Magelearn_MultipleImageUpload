@@ -3,8 +3,8 @@
 /** @var \Magelearn\Story\Block\View\Story $block */
 $story = $block->getCurrentStory();
 $galleryImages = $block->getStoryGallery();
-
 ?>
+
 <?php if ($story->getPhoto()): ?>
     <div class="story-main-section">
         <div class="main-story-photo">
@@ -17,22 +17,37 @@ $galleryImages = $block->getStoryGallery();
         </div>
     </div>
 <?php endif; ?>
+
 <?php if (!empty($galleryImages)): ?>
     <div class="story-gallery-section">
         <h2 class="gallery-title"><?= $block->escapeHtml(__('Image Gallery')) ?></h2>
 
-        <div class="story-gallery-container" id="story-gallery">
-            <?php foreach ($galleryImages as $index => $image): ?>
-                <a class="story-gallery-item"
-                   data-fancybox="gallery"
-                   data-src="<?= $block->escapeHtml($image['path']) ?>"
-                   data-caption="<?= $block->escapeHtml($story->getName() . ' - Image ' . ($index + 1)) ?>">
-                    <img src="<?= $block->escapeHtml($image['path']) ?>"
-                         alt="<?= $block->escapeHtml($story->getName() . ' - Image ' . ($index + 1)) ?>"
-                         loading="lazy"
-                         onerror="this.onerror=null; this.src='<?= $block->escapeUrl($block->getViewFileUrl('Magelearn_Story::images/placeholder.jpg')) ?>';">
-                </a>
-            <?php endforeach; ?>
+        <div class="gallery-wrapper" id="story-gallery">
+            <div class="gallery-slider">
+                <?php foreach ($galleryImages as $index => $image): ?>
+                    <div class="gallery-slide">
+                        <a class="story-gallery-item"
+                           data-fancybox="gallery"
+                           data-src="<?= $block->escapeHtml($image['path']) ?>"
+                           data-caption="<?= $block->escapeHtml($story->getName() . ' - Image ' . ($index + 1)) ?>">
+                            <img src="<?= $block->escapeHtml($image['path']) ?>"
+                                 alt="<?= $block->escapeHtml($story->getName() . ' - Image ' . ($index + 1)) ?>"
+                                 loading="lazy"
+                                 onerror="this.onerror=null; this.src='<?= $block->escapeUrl($block->getViewFileUrl('Magelearn_Story::images/placeholder.jpg')) ?>';">
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="gallery-slider-nav">
+                <?php foreach ($galleryImages as $index => $image): ?>
+                    <div class="gallery-nav-slide">
+                        <img src="<?= $block->escapeHtml($image['path']) ?>"
+                             alt="<?= $block->escapeHtml($story->getName() . ' - Thumbnail ' . ($index + 1)) ?>"
+                             loading="lazy"
+                             onerror="this.onerror=null; this.src='<?= $block->escapeUrl($block->getViewFileUrl('Magelearn_Story::images/placeholder.jpg')) ?>';">
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 
