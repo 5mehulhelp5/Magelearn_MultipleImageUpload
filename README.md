@@ -35,19 +35,26 @@ This setting provides control over the navigation to the story detail page from 
 
 #### Manual Installation:
 
-Clone this repository.
-Create the folder app/code/Magelearn/Story in your Magento installation and add the code inside this folder.
-Composer Installation: Run the following command in your Magento root directory to install the module via Composer:
+1. Clone this repository.
 
-#### composer require magelearn/module-story-with-image-gallery
+Create the folder app/code/Magelearn/Story in your Magento installation and add the code inside this folder.
+
+2. Composer Installation:
+
+Run the following command in your Magento root directory to install the module via Composer:
+
+##### composer require magelearn/module-story-with-image-gallery
 
 #### Admin Instructions
 
 #### Story Upload:
+
 Learn how to upload single and multiple images from the admin panel for the story listing page.
+
 Clean code with pagination for managing multiple stories.
 
 #### Benefits
+
 Streamlined process for uploading multiple images and managing story content.
 
 Provides flexibility for the admin to manage story page settings easily.
