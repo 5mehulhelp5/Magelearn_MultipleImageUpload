@@ -278,13 +278,13 @@ class Story extends Template implements IdentityInterface
             
             if ($this->pager && !$this->pager->isFirstPage()) {
                 $this->addPrevNext(
-                    $this->getUrl('mlstory/index/ajax', ['p' => $this->pager->getCurrentPage() - 1]),
+                    $this->getUrl('mlstory', ['p' => $this->pager->getCurrentPage() - 1]),
                     ['rel' => 'prev']
                     );
             }
             if ($this->pager && $this->pager->getCurrentPage() < $this->pager->getLastPageNum()) {
                 $this->addPrevNext(
-                    $this->getUrl('mlstory/index/ajax', ['p' => $this->pager->getCurrentPage() + 1]),
+                    $this->getUrl('mlstory', ['p' => $this->pager->getCurrentPage() + 1]),
                     ['rel' => 'next']
                     );
             }

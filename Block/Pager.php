@@ -13,11 +13,23 @@ class Pager extends \Magento\Theme\Block\Html\Pager
      */
     public function getPagerUrl($params = [])
     {
-        $ajaxUrl = $this->_urlBuilder->getUrl('mlstory/index/ajax');
+        $ajaxUrl = rtrim($this->_urlBuilder->getUrl('mlstory'), '/');
+
         if ($query = $this->getRequest()->getParam('query')) {
             $params['query'] = $query;
         }
 
-        return $ajaxUrl . '?' . http_build_query($params);
+        // Remove page parameter if it's 1 or not set
+        if (isset($params['p']) && ($params['p'] == 1 || $params['p'] == '1')) {
+            unset($params['p']);
+        }
+
+        // Return base URL without any parameters if empty
+        if (empty($params)) {
+            return $ajaxUrl;
+        }
+
+        $queryString = http_build_query($params);
+        return !empty($queryString) ? $ajaxUrl . '?' . $queryString : $ajaxUrl;
     }
 }
