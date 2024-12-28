@@ -88,9 +88,17 @@
 .gallery-slider {
     margin-bottom: 20px;
 }
+.gallery-slide {
+    text-align: center;
+    padding: 0 10px;
+}
 .gallery-slide img {
-    width: 100%;
+    width: 80%;  /* Reduced from 100% to 80% */
     height: auto;
+    margin: 0 auto;  /* Center the image */
+    display: block;  /* Ensures margin auto works */
+    max-height: 400px;  /* Added max-height constraint */
+    object-fit: contain;  /* Ensures image maintains aspect ratio */
 }
 .gallery-slider-nav {
     margin-top: 20px;
