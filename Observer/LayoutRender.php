@@ -49,7 +49,7 @@ class LayoutRender implements ObserverInterface
             if ($parent) {
                 $this->layout->addBlock(
                     \Magelearn\Story\Block\Link::class,
-                    'amlocator_top_link',
+                    'mlstory_top_link',
                     $parent
                 );
             }

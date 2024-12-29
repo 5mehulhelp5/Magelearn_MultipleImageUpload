@@ -239,10 +239,10 @@
 		</column>
 		<column name="created_at">
 			<settings>
-				<filter>text</filter>
+				<filter>dateRange</filter>
 				<label translate="true">Created At</label>
 				<editor>
-					<editorType>text</editorType>
+					<editorType>date</editorType>
 					<validation>
 						<rule name="required-entry" xsi:type="boolean">false</rule>
 					</validation>
@@ -251,10 +251,10 @@
 		</column>
 		<column name="updated_at">
 			<settings>
-				<filter>text</filter>
+				<filter>dateRange</filter>
 				<label translate="true">Updated At</label>
 				<editor>
-					<editorType>text</editorType>
+					<editorType>date</editorType>
 					<validation>
 						<rule name="required-entry" xsi:type="boolean">false</rule>
 					</validation>

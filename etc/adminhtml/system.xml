@@ -18,16 +18,16 @@
                 </field>
                 <field id="label" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Title</label>
-                    <tooltip>The title of the Store Locator page will be displayed in the top (breadcrumbs) and bottom menu (footer).</tooltip>
+                    <tooltip>The title of the Story page will be displayed in the top (breadcrumbs) and bottom menu (footer).</tooltip>
                 </field>
                 <field id="add_to_toolbar_menu" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Add Story Listing Link to the Toolbar</label>
-                    <tooltip>Link to the Store Locator page will be added to the toolbar</tooltip>
+                    <tooltip>Link to the Story page will be added to the toolbar</tooltip>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
                 <field id="add_to_footer_menu" translate="label comment" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Add Story Listing Link to the Footer</label>
-                    <tooltip>Link to the Store Locator page will be added to the footer</tooltip>
+                    <tooltip>Link to the Story page will be added to the footer</tooltip>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>

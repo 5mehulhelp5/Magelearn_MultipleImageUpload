@@ -309,7 +309,7 @@ class Story extends Template implements IdentityInterface
             );
     }
     /**
-     * Return Pager for locator page
+     * Return Pager for story page
      *
      * @return string
      */
