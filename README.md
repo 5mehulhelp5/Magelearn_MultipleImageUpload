@@ -23,6 +23,12 @@ The Magelearn_Story module adds a powerful image gallery and story listing funct
 
 ### Front
 
+![1_image](/assests/front1.png)
+
+![2_image](/assests/front2.png)
+
+![3_image](/assests/front3.png)
+
 ### Key Features
 #### Image Gallery Management:
 
