@@ -77,6 +77,10 @@ Learn how to upload single and multiple images from the admin panel for the stor
 
 Clean code with pagination for managing multiple stories.
 
+Manage meta tags for each story.
+
+Also, display image gallery by combining power of both Slick carousel and fancybox JS.
+
 #### Benefits
 
 Streamlined process for uploading multiple images and managing story content.
