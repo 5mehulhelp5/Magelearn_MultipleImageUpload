@@ -3,21 +3,26 @@ declare(strict_types=1);
 
 namespace Magelearn\Story\Controller\Adminhtml\Story;
 
+use Magento\Backend\App\Action\Context;
+use Magelearn\Story\Model\StoryFactory;
+
 class InlineEdit extends \Magento\Backend\App\Action
 {
-
-    protected $jsonFactory;
+    /**
+     * @var StoryFactory
+     */
+    private $storyFactory;
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\Framework\Controller\Result\JsonFactory $jsonFactory
+     * @param StoryFactory $storyFactory
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\Controller\Result\JsonFactory $jsonFactory
+        StoryFactory $storyFactory
     ) {
         parent::__construct($context);
-        $this->jsonFactory = $jsonFactory;
+        $this->storyFactory = $storyFactory;
     }
 
     /**
@@ -28,27 +33,38 @@ class InlineEdit extends \Magento\Backend\App\Action
     public function execute()
     {
         /** @var \Magento\Framework\Controller\Result\Json $resultJson */
-        $resultJson = $this->jsonFactory->create();
+        $resultJson = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_JSON);
         $error = false;
         $messages = [];
-        
-        if ($this->getRequest()->getParam('isAjax')) {
-            $postItems = $this->getRequest()->getParam('items', []);
-            if (!count($postItems)) {
-                $messages[] = __('Please correct the data sent.');
+
+        $postItems = $this->getRequest()->getParam('items', []);
+        if (!($this->getRequest()->getParam('isAjax') && count($postItems))) {
+            return $resultJson->setData([
+                'messages' => [__('Please correct the data sent.')],
+                'error' => true,
+            ]);
+        }
+
+        foreach ($postItems as $storyId => $storyData) {
+            /** @var \Magelearn\Story\Model\Story $story */
+            $story = $this->storyFactory->create();
+            $story->load($storyId);
+            $story->setData('inlineEdit', true);
+            try {
+                $story->addData($storyData);
+                $story->save();
+            } catch (\Magento\Framework\Exception\LocalizedException $e) {
+                $messages[] = $this->getErrorMessage($location, $e->getMessage());
                 $error = true;
-            } else {
-                foreach (array_keys($postItems) as $modelid) {
-                    /** @var \Magelearn\Story\Model\Story $model */
-                    $model = $this->_objectManager->create(\Magelearn\Story\Model\Story::class)->load($modelid);
-                    try {
-                        $model->setData(array_merge($model->getData(), $postItems[$modelid]));
-                        $model->save();
-                    } catch (\Exception $e) {
-                        $messages[] = "[Story ID: {$modelid}]  {$e->getMessage()}";
-                        $error = true;
-                    }
-                }
+            } catch (\RuntimeException $e) {
+                $messages[] = $this->getErrorMessage($location, $e->getMessage());
+                $error = true;
+            } catch (\Exception $e) {
+                $messages[] = $this->getErrorMessage(
+                    $location,
+                    __('Something went wrong while saving the location.')
+                    );
+                $error = true;
             }
         }
         
@@ -56,6 +72,18 @@ class InlineEdit extends \Magento\Backend\App\Action
             'messages' => $messages,
             'error' => $error
         ]);
+    }
+
+    /**
+     * Add story id to error message
+     *
+     * @param \Magelearn\Story\Model\Story $story
+     * @param string $errorText
+     * @return string
+     */
+    private function getErrorMessage($story, $errorText)
+    {
+        return '[Story ID: ' . $story->getId() . '] ' . $errorText;
     }
 }
 

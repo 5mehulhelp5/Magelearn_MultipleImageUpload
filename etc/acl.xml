@@ -16,12 +16,6 @@
 					<resource id="Magelearn_Story::Story_update" title="Update Story" sortOrder="30"/>
 					<resource id="Magelearn_Story::Story_view" title="View Story" sortOrder="40"/>
 				</resource>
-				<resource id="Magelearn_Story::StoryImage" title="Story Image" sortOrder="10">
-					<resource id="Magelearn_Story::StoryImage_save" title="Save StoryImage" sortOrder="10"/>
-					<resource id="Magelearn_Story::StoryImage_delete" title="Delete StoryImage" sortOrder="20"/>
-					<resource id="Magelearn_Story::StoryImage_update" title="Update StoryImage" sortOrder="30"/>
-					<resource id="Magelearn_Story::StoryImage_view" title="View StoryImage" sortOrder="40"/>
-				</resource>
 			</resource>
 		</resources>
 	</acl>

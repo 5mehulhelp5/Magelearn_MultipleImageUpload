@@ -5,7 +5,6 @@ namespace Magelearn\Story\Model\ResourceModel\Story;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Magelearn\Story\Api\Data\StoryInterface;
-use Magelearn\Story\Model\ConfigProvider;
 use Magelearn\Story\Model\ResourceModel\Gallery;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\RequestInterface;
@@ -49,11 +48,6 @@ class Collection extends AbstractCollection
      */
     protected $httpRequest;
     
-    /**
-     * @var ConfigProvider
-     */
-    private $configProvider;
-    
     public function __construct(
         EntityFactoryInterface $entityFactory,
         LoggerInterface $logger,
@@ -64,7 +58,6 @@ class Collection extends AbstractCollection
         Registry $registry,
         ScopeConfigInterface $scope,
         Request $httpRequest,
-        ConfigProvider $configProvider,
         AdapterInterface $connection = null,
         AbstractDb $resource = null
         ) {
@@ -73,7 +66,6 @@ class Collection extends AbstractCollection
             $this->coreRegistry = $registry;
             $this->scopeConfig = $scope;
             $this->httpRequest = $httpRequest;
-            $this->configProvider = $configProvider;
             parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $connection, $resource);
     }
 
