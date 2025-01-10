@@ -111,7 +111,7 @@
                     <item name="label" xsi:type="string" translate="true">Story Image</item>
                     <item name="previewTmpl" xsi:type="string">Magelearn_Story/form/element/image-preview</item>
                     <item name="notice" xsi:type="string" translate="true">
-                        Image will be resized to 27x43 px. Allowed file types : jpg jpeg gif png. Gif can have only one frame
+                        Allowed file types : jpg jpeg gif png. Gif can have only one frame
                     </item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>

@@ -184,6 +184,24 @@ class Story extends AbstractModel implements StoryInterface
         return $urlKey;
     }
 
+    public function activate()
+    {
+        $this->setStatus(1);
+        $this->setData('massAction', true);
+        $this->save();
+        
+        return $this;
+    }
+    
+    public function inactivate()
+    {
+        $this->setStatus(0);
+        $this->setData('massAction', true);
+        $this->save();
+        
+        return $this;
+    }
+
     /**
      * @inheritDoc
      */
